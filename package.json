@@ -1,0 +1,39 @@
+{
+  "name": "prx-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d ./dest",
+    "watch": "npm run build --watch"
+  },
+  "bin": {
+    "prx": "./bin/prx.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/plugin-transform-runtime": "^7.16.4",
+    "@babel/preset-env": "^7.16.4",
+    "babel": "^6.23.0",
+    "chalk": "^2.4.2",
+    "commander": "^4.1.1",
+    "download-git-repo": "^3.0.2",
+    "fast-glob": "^3.2.7",
+    "fs-extra": "^10.0.0",
+    "inquirer": "^8.2.0",
+    "ora": "^5.4.1",
+    "validate-npm-package-name": "^3.0.0"
+  },
+  "publishConfig": {
+    "registry": "http://github.com/mttcug"
+  },
+  "files": [
+    "bin",
+    "dest"
+  ]
+}
