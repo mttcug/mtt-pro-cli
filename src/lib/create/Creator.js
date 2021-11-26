@@ -3,10 +3,17 @@ const fs = require('fs')
 const fsE = require('fs-extra')
 const path = require('path')
 const fg = require('fast-glob')
+const ora = require('ora')
+const rm = require('rimraf')
+const { exec } = require('child_process')
+const chalk = require('chalk')
+import logSymbols from 'log-symbols'
 
 export class Creator {
-    constructor (projectName) {
+    constructor (projectName, framework, platform) {
         this.projectName = projectName
+        this.framework = framework
+        this.platform = platform
     }
 
     async create() {
@@ -14,15 +21,35 @@ export class Creator {
         const context = path.join(process.cwd(), 'template')
         const files = await this.readFiles(context)
         await this.writeFiles(path.join(process.cwd(), this.projectName), files)
-        fs.rmdir(context)
+        return new Promise((resolve, reject) => {
+            rm(context, {}, (err) => {
+				const loading = ora('installing modules...')
+                loading.start()
+                exec('npm install', { cwd: `${this.projectName}` }, (err) => {
+                    console.log('-----Err:', err)
+                    if (err) return reject(err)
+                    resolve()
+                    loading.succeed()
+					console.log(logSymbols.success, chalk.green('prx initial success'))
+					const cmd = this.framework === 'react' ? 'npm run start' : 'npm run dev'
+					console.log(chalk.cyan(`✨ cd ${this.projectName} && ${cmd}`))
+                })
+            })
+        })
     }
 
     // 下载模版
     async downLoad () {
+        const loading = ora('downloading template ...')
+        loading.start()
         return new Promise((resolve, reject) => {
             downloadGit('direct:https://github.com/mttcug/react-base','template', {clone: true}, (err) => {
                 console.log(err)
-                if (err) { reject(err) }
+                if (err) {
+                    loading.fail()
+                    return reject(err)
+                }
+                loading.succeed()
                 resolve()
             })
         })
