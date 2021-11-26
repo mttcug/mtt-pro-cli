@@ -4,7 +4,6 @@ import chalk from 'chalk'
 import fs from 'fs'
 const path = require('path')
 import Creator from './Creator'
-const ora = require('ora')
 
 async function create (projectName) {
     let _proName = projectName
@@ -60,15 +59,13 @@ async function create (projectName) {
         ])
         _platform = result.platform
     }
-    const creator = new Creator(_proName)
-    const loading = ora('loading...')
-    loading.start()
+    const creator = new Creator(_proName, _framework, _platform)
     await creator.create()
-    loading.stop()
 };
 
 module.exports = (...args) => {
     return create(...args).catch((err) => {
-        console.log('---err:', err)
+        console.log(chalk.red('project initialing fail!!!'))
+        process.exit(-1)
     })
 }
