@@ -1,30 +1,31 @@
 import program from 'commander'
 import create from './lib/create/index'
+import page from './lib/page/index'
 
 const [ explain, cliCommand, command, projectName ] = process.argv
 
-const commands = {
+const commandMap = {
     'create': {
         description: 'create a new project',
         usage: [
             'prx create <project-name>'
         ],
         action: () => {
-            return create(projectName)
+            return create(process.argv[3])
         }
     },
     'page': {
         description: 'create a new page',
         usage: [
-            'prx page <page-name>'
+            'prx page add <page-name>'
         ],
         action: () => {
-            return page(projectName)
+            return page(process.argv[3], process.argv[4])
         }
     }
 }
 
-Object.keys(commands).map((command) => {
+Object.keys(commandMap).map((command) => {
     program.command(command)
             .description(commandMap[command].description)
             .usage(commandMap[command].usage[0])

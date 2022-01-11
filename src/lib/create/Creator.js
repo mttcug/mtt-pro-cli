@@ -18,7 +18,7 @@ export class Creator {
 
     async create() {
         await this.downLoad()
-        const context = path.join(process.cwd(), 'template')
+        const context = path.join(process.cwd(), 'project')
         const files = await this.readFiles(context)
         await this.writeFiles(path.join(process.cwd(), this.projectName), files)
         return new Promise((resolve, reject) => {
@@ -26,7 +26,6 @@ export class Creator {
 				const loading = ora('installing modules...')
                 loading.start()
                 exec('npm install', { cwd: `${this.projectName}` }, (err) => {
-                    console.log('-----Err:', err)
                     if (err) return reject(err)
                     resolve()
                     loading.succeed()
@@ -43,7 +42,7 @@ export class Creator {
         const loading = ora('downloading template ...')
         loading.start()
         return new Promise((resolve, reject) => {
-            downloadGit('direct:https://github.com/mttcug/react-base','template', {clone: true}, (err) => {
+            downloadGit('direct:https://github.com/mttcug/react-base','project', {clone: true}, (err) => {
                 console.log(err)
                 if (err) {
                     loading.fail()

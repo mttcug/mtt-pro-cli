@@ -1,8 +1,10 @@
 {
     "presets": [
-        ["@babel/env"]
+        "@babel/env",
+        "@babel/react"
     ],
     "plugins": [
-        ["@babel/transform-runtime"]
-    ]
+        "@babel/transform-runtime"
+    ],
+    "ignore": ["src/template/*"]
 }
