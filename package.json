@@ -9,7 +9,7 @@
     "watch": "npm run build -- --watch"
   },
   "bin": {
-    "pts": "./bin/pts.js"
+    "prx": "./bin/prx.js"
   },
   "keywords": [],
   "author": "",
@@ -33,7 +33,7 @@
     "validate-npm-package-name": "^3.0.0"
   },
   "publishConfig": {
-    "registry": "http://github.com/mttcug"
+    "registry": "https://github.com/mttcug/prx-cli.git"
   },
   "files": [
     "bin",
