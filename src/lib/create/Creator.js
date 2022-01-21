@@ -42,7 +42,7 @@ export class Creator {
         const loading = ora('downloading template ...')
         loading.start()
         return new Promise((resolve, reject) => {
-            downloadGit('direct:https://github.com/mttcug/react-base','project', {clone: true}, (err) => {
+            downloadGit('github:mttcug/react-base#master','project', { clone: true }, (err) => {
                 console.log(err)
                 if (err) {
                     loading.fail()

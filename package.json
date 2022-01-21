@@ -1,5 +1,5 @@
 {
-  "name": "prx-cli",
+  "name": "mtt-pro-cli",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +9,7 @@
     "watch": "npm run build -- --watch"
   },
   "bin": {
-    "prx": "./bin/prx.js"
+    "pro-cli": "./bin/pro-cli.js"
   },
   "keywords": [],
   "author": "",
@@ -31,9 +31,6 @@
     "ora": "^5.4.1",
     "rimraf": "^3.0.2",
     "validate-npm-package-name": "^3.0.0"
-  },
-  "publishConfig": {
-    "registry": "https://github.com/mttcug/prx-cli.git"
   },
   "files": [
     "bin",

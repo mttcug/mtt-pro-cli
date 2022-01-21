@@ -28,7 +28,7 @@ async function create (projectName) {
     if(fs.existsSync(targetDir)) {
         await fs.remove(targetDir)
     }
-    console.info(chalk.magenta('prx start ...'))
+    console.info(chalk.magenta('mtt-pro-cli start ...'))
     const result = await inquirer.prompt([
         {
             type: 'list',

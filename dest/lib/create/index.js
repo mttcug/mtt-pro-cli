@@ -68,7 +68,7 @@ function _create() {
             return _fs["default"].remove(targetDir);
 
           case 12:
-            console.info(_chalk["default"].magenta('prx start ...'));
+            console.info(_chalk["default"].magenta('mtt-pro-cli start ...'));
             _context.next = 15;
             return _inquirer["default"].prompt([{
               type: 'list',

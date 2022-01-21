@@ -119,7 +119,7 @@ var Creator = /*#__PURE__*/function () {
                 loading = ora('downloading template ...');
                 loading.start();
                 return _context2.abrupt("return", new Promise(function (resolve, reject) {
-                  downloadGit('direct:https://github.com/mttcug/react-base', 'project', {
+                  downloadGit('github:mttcug/react-base#master', 'project', {
                     clone: true
                   }, function (err) {
                     console.log(err);
